@@ -1,50 +1,23 @@
-# Node.js base image
-FROM node:21-alpine
+FROM python:3.11-slim
 
-# Arbeitsverzeichnis setzen
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
 WORKDIR /app
 
-# Abhängigkeiten für ClamAV und Node installieren
-RUN apk update && \
-    apk add --no-cache \
-        clamav \
-        clamav-libunrar \
-        clamav-daemon \
-        chromium \
-        udev \
-        ttf-freefont && \
-    npm install -g typescript
+COPY requirements.txt ./
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libssl-dev \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apt-get purge -y build-essential libssl-dev \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
-# ClamAV-Konfiguration: "Example" auskommentieren und Socket-Pfad anpassen
-RUN sed -i 's/^Example/#Example/' /etc/clamav/clamd.conf \
- && sed -i 's|^#LocalSocket .*|LocalSocket /run/clamav/clamd.sock|' /etc/clamav/clamd.conf \
- && sed -i 's|^#LocalSocketMode .*|LocalSocketMode 666|' /etc/clamav/clamd.conf \
- && sed -i 's|^#FixStaleSocket .*|FixStaleSocket true|' /etc/clamav/clamd.conf
+COPY app ./app
+COPY data ./data
 
-# Socket-Verzeichnis anlegen und Berechtigungen setzen
-RUN mkdir -p /run/clamav \
-    && chown -R clamav:clamav /run/clamav
-
-# Virendatenbank aktualisieren
-RUN freshclam
-
-# Umgebungsvariablen für Puppeteer
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser \
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-
-# Package.json kopieren und NPM-Abhängigkeiten installieren
-COPY package.json ./
-RUN npm install
-
-# Quellcode kopieren
-COPY src ./src
-COPY tsconfig.json ./
-
-# Build
-RUN npm run build
-
-# Port öffnen
 EXPOSE 3000
 
-# clamd und Node-App starten
-CMD ["sh", "-c", "clamd && npm run production"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "3000"]

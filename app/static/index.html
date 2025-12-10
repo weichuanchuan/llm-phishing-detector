@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MailCheck Python UI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">MailCheck · Python Edition</p>
+      <h1>Analyze suspicious emails with transparent explanations</h1>
+      <p class="lede">
+        Upload an .eml file to run SPF-aware header checks, link crawling, attachment heuristics, and keyword signals—all backed by the FastAPI reproduction of the original MailCheck pipeline.
+      </p>
+      <div class="cta-group">
+        <a href="/docs" class="button button--ghost">View API docs</a>
+        <a href="https://mailcheck.help/result?r=6875a1b4-0d27-4a8c-8773-c1a1efb1c88c" class="button" target="_blank" rel="noreferrer">See sample report</a>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="upload-card">
+        <h2>Upload EML for analysis</h2>
+        <form id="upload-form">
+          <label class="file-picker">
+            <input type="file" id="file-input" accept=".eml" required />
+            <span>Choose an .eml file</span>
+          </label>
+          <label class="persist-toggle">
+            <input type="checkbox" id="persist-toggle" checked />
+            <span>Persist report for later retrieval</span>
+          </label>
+          <button type="submit" class="button button--primary">Analyze now</button>
+        </form>
+        <div id="status" class="status"></div>
+      </div>
+      <div class="upload-card">
+        <h3>Retrieve a saved report</h3>
+        <form id="retrieve-form">
+          <label class="input-label" for="uuid-input">Report UUID</label>
+          <div class="input-row">
+            <input type="text" id="uuid-input" placeholder="e.g. 6875a1b4-0d27-4a8c-8773-c1a1efb1c88c" />
+            <button type="submit" class="button">Fetch</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section id="report" class="card hidden">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">Result</p>
+          <h2 id="report-title">Analysis summary</h2>
+        </div>
+        <div class="pill" id="risk-pill">Risk</div>
+      </div>
+      <p id="summary" class="summary"></p>
+
+      <div class="grid">
+        <div class="info-block">
+          <h3>Score</h3>
+          <p id="score"></p>
+        </div>
+        <div class="info-block">
+          <h3>Metadata</h3>
+          <dl id="metadata"></dl>
+        </div>
+        <div class="info-block">
+          <h3>Keywords</h3>
+          <ul id="keywords" class="chip-list"></ul>
+        </div>
+      </div>
+
+      <div class="grid grid--two">
+        <div>
+          <h3>Header findings</h3>
+          <ul id="headers" class="list"></ul>
+        </div>
+        <div>
+          <h3>Attachment findings</h3>
+          <ul id="attachments" class="list"></ul>
+        </div>
+      </div>
+
+      <div>
+        <h3>URLs</h3>
+        <ul id="urls" class="list"></ul>
+      </div>
+
+      <div>
+        <h3>Warnings</h3>
+        <ul id="warnings" class="list"></ul>
+      </div>
+
+      <details class="raw">
+        <summary>Raw headers</summary>
+        <pre id="raw-headers"></pre>
+      </details>
+
+      <div id="feedback" class="feedback">
+        <h3>How helpful was this?</h3>
+        <form id="feedback-form">
+          <div class="rating" id="rating"></div>
+          <textarea id="comment" placeholder="Optional feedback" rows="3"></textarea>
+          <button type="submit" class="button">Send feedback</button>
+        </form>
+        <p id="feedback-status" class="status"></p>
+      </div>
+    </section>
+
+    <section class="card glossary">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">Glossary</p>
+          <h2>Security concepts</h2>
+        </div>
+      </div>
+      <div class="glossary__controls">
+        <select id="term-select">
+          <option value="spf">SPF</option>
+          <option value="dkim">DKIM</option>
+          <option value="dmarc">DMARC</option>
+          <option value="link hygiene">Link hygiene</option>
+        </select>
+        <button id="load-term" class="button">Explain</button>
+      </div>
+      <div id="glossary-body"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

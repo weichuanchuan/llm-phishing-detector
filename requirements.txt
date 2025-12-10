@@ -1,0 +1,9 @@
+aiohttp==3.10.10
+fastapi==0.115.4
+python-multipart==0.0.9
+tldextract==5.1.2
+pydantic==2.9.2
+rich==13.9.4
+uvicorn[standard]==0.31.1
+watchdog==5.0.3
+dnspython==2.7.0
