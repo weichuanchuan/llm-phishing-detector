@@ -4,7 +4,7 @@
   "description": "automatic mail integrity checks to prevent phishing",
   "main": "src/app.ts",
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "start": "npm run build && npm run production",
     "production": "node build/index.js",
     "build": "npx ncc build src/app.ts -o build --source-map --external puppeteer --external puppeteer-extra --external puppeteer-extra-plugin-stealth --external puppeteer-extra-plugin-anonymize-ua",
     "build-mini": "npx ncc build src/app.ts -o build --minify --source-map"

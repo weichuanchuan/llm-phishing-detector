@@ -57,6 +57,16 @@ The system is organized into several key components:
 - A mail server for sending/receiving emails
 - An OpenRouter API key for LLM access
 
+### Run Directly on Windows
+
+1. Install Node.js 18 or newer for Windows.
+2. In a terminal, run:
+   ```bash
+   npm install
+   npm start
+   ```
+   The start script automatically builds the TypeScript sources and launches the server.
+
 ### Docker Compose Installation
 
 1. Clone the repository:
