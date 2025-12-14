@@ -51,9 +51,45 @@ The system is organized into several key components:
 ## Installation
 
 ### Prerequisites
-- Docker and Docker Compose
+- Node.js 18+ and npm
+- ClamAV installed on the host (used for attachment scanning)
+- Chromium/Chrome available on the host (Puppeteer will use its bundled browser if available or the executable path you provide)
 - A mail server for sending/receiving emails
 - An OpenRouter API key for LLM access
+
+### Local Installation (no Docker)
+
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   cd mailcheck
+   ```
+
+2. Create your environment file from the template and fill in credentials:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Required variables:
+   - `MAIL_SERVER`, `MAIL_USERNAME`, `MAIL_PASSWORD`: SMTP details for sending reports.
+   - `MAIL_SERVER_FS`: Path to your Maildir for ingesting EML files (defaults to `./data/mailserver`).
+   - `GOOGLE_SAFE_BROWSING_API_KEY` and `OPENROUTER_API_KEY`: API keys for URL checks and LLM analysis.
+   - `PUPPETEER_EXECUTABLE_PATH` (optional): Point to a local Chrome/Chromium binary if Puppeteer's bundled browser should be overridden.
+
+3. Install dependencies and prepare local data folders:
+   ```bash
+   npm install
+   npm run setup:local
+   ```
+
+4. Start the application directly with Node.js:
+   ```bash
+   npm run start
+   ```
+
+   The server will listen on `http://localhost:3000` (or the `PORT` you set). Screenshots, feedback, and reports will be written under `data/tmp/` in the project root.
+
+5. Stop the application with `Ctrl+C` in the terminal.
 
 ### Docker Compose Installation
 
@@ -63,28 +99,13 @@ The system is organized into several key components:
    cd mailcheck
    ```
 
-2. Create a `.env` file with the following variables:
-   ```
-   # Mail server configuration
-   MAIL_SERVER=your-mail-server
-   MAIL_USERNAME=your-email@example.com
-   MAIL_PASSWORD=your-email-password
-   
-   # Path to the directory where incoming emails will be stored
-   MAIL_SERVER_FS=/path/to/mailserver/directory
-   
-   # API key for Google Safe Browsing to check URLs for malicious content
-   GOOGLE_SAFE_BROWSING_API_KEY=your-google-safe-browsing-api-key
-   
-   # API key for OpenRouter to access various AI models
-   OPENROUTER_API_KEY=your-openrouter-api-key
-   ```
+2. Create a `.env` file (see `.env.example` for required variables).
 
 3. Start the application with Docker Compose:
    ```bash
    docker compose up -d
    ```
-   
+
    This will:
    - Build the Docker image with Node.js, ClamAV, and Chromium
    - Mount the data directory for persistence

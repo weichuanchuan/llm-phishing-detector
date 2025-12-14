@@ -94,7 +94,7 @@ export class UrlCrawler {
     private static instance: UrlCrawler;
     private semaphore: Semaphore;
     whitelist: WhitelistChecker;
-    private screenshotDir = path.resolve(__dirname, '../data/tmp/screenshots');
+    private screenshotDir = path.resolve(process.cwd(), 'data/tmp/screenshots');
     private screenshotManager: ScreenshotController = new ScreenshotController(path.resolve(this.screenshotDir, 'screenshots.json'));
 
     private constructor() {
@@ -104,7 +104,7 @@ export class UrlCrawler {
         });
         this.semaphore = new Semaphore(7);
         this.whitelist = new WhitelistChecker();
-        const whitelistPath = path.resolve(__dirname, '..', 'data', 'public', 'whitelist.txt');
+        const whitelistPath = path.resolve(process.cwd(), 'data', 'public', 'whitelist.txt');
         this.whitelist.loadWhitelist(whitelistPath);
         const checkInterval = 1000 * 60;
         // check every 5 min if the browser is in use. close otherwise to free up resources
@@ -145,7 +145,7 @@ export class UrlCrawler {
         this.browser = await puppeteer.launch({
             headless: true,
             defaultViewport: options?.screenshotSize ?? { width: 1920, height: 1080 },
-            executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium-browser',
+            executablePath: process.env.PUPPETEER_EXECUTABLE_PATH ?? undefined,
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
         });
     }

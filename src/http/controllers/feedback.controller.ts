@@ -21,7 +21,7 @@ interface FeedbackRequest {
 }
 
 // Directory where feedback data will be stored
-const feedbackDir = path.resolve(__dirname, '../data/tmp/feedback');
+const feedbackDir = path.resolve(process.cwd(), 'data/tmp/feedback');
 
 /**
  * Handles POST requests for user feedback

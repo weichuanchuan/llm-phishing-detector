@@ -9,7 +9,7 @@ import fs from 'fs/promises';
  */
 
 // Directory where report data will be stored
-const reportDir = path.resolve(__dirname, '../data/tmp/reports');
+const reportDir = path.resolve(process.cwd(), 'data/tmp/reports');
 
 /**
  * Handles POST requests to persist an analysis report
