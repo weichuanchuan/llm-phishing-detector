@@ -59,6 +59,8 @@ The system is organized into several key components:
 
 ### Local Installation (no Docker)
 
+You can run the project directly on Windows, macOS, or Linux without containers. The Windows steps below are PowerShell-friendly; bash users can follow the same sequence with the listed commands.
+
 1. Clone the repository:
    ```bash
    git clone [repository-url]
@@ -67,6 +69,10 @@ The system is organized into several key components:
 
 2. Create your environment file from the template and fill in credentials:
    ```bash
+   # PowerShell
+   copy .env.example .env
+
+   # Git Bash / WSL
    cp .env.example .env
    ```
 
@@ -90,6 +96,14 @@ The system is organized into several key components:
    The server will listen on `http://localhost:3000` (or the `PORT` you set). Screenshots, feedback, and reports will be written under `data/tmp/` in the project root.
 
 5. Stop the application with `Ctrl+C` in the terminal.
+
+#### Windows-specific notes
+
+- **Node.js and npm**: Install the latest LTS release from [nodejs.org](https://nodejs.org/). Confirm installation with `node -v` and `npm -v` in PowerShell.
+- **ClamAV**: Install the official Windows build (or use [ClamWin](https://www.clamwin.com/)) and ensure the `clamscan.exe` path is in your `PATH` so the `clamscan` npm package can invoke it.
+- **Chromium/Chrome**: If the bundled Puppeteer binary cannot launch on your machine, install Chrome/Edge and set `PUPPETEER_EXECUTABLE_PATH` in `.env` to the browser executable (for example, `C:\Program Files\Google\Chrome\Application\chrome.exe`).
+- **Maildir path**: The default `MAIL_SERVER_FS=./data/mailserver` works on Windows. If you point it elsewhere, use Windows paths (e.g., `C:\mailcheck\maildir`).
+- **Shell choice**: All npm scripts run in PowerShell, Git Bash, or WSL. When using PowerShell, prefer the `copy` command shown above to create `.env`.
 
 ### Docker Compose Installation
 
