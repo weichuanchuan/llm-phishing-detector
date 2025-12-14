@@ -88,12 +88,12 @@ You can run the project directly on Windows, macOS, or Linux without containers.
    npm run setup:local
    ```
 
-4. Start the application directly with Node.js:
+4. Start the application directly with Node.js (both `npm start` and `npm run start` work):
    ```bash
-   npm run start
+   npm start
    ```
 
-   The server will listen on `http://localhost:3000` (or the `PORT` you set). Screenshots, feedback, and reports will be written under `data/tmp/` in the project root.
+   The terminal will print clickable links such as `http://localhost:3000` and `http://localhost:3000/index.html` so you can jump straight to the frontend. The server listens on `http://localhost:3000` (or the `PORT` you set). Screenshots, feedback, and reports are written under `data/tmp/` in the project root.
 
 5. Stop the application with `Ctrl+C` in the terminal.
 

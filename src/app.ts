@@ -41,5 +41,8 @@ function main() {
 // Start the server and initialize the mail processor
 app.listen(port, () => {
     main();
-    console.log(`Server running on port ${port}`);
+
+    const baseUrl = `http://localhost:${port}`;
+    console.log(`服务已启动：${baseUrl}`);
+    console.log(`前端页面：${baseUrl}/index.html`);
 });
