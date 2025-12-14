@@ -1,7 +1,5 @@
 # MailCheck: Email Security Analysis System
 
-![MailCheck Demo](https://raw.githubusercontent.com/jannikhst/llm-phishing-detector/main/data/public/gif/screenshot-2025-08-08-000275.gif)
-
 Try it yourself: [mailcheck.help](https://mailcheck.help)
 View example report: [Report](https://mailcheck.help/result?r=6875a1b4-0d27-4a8c-8773-c1a1efb1c88c)
 
@@ -192,20 +190,11 @@ The `public` directory contains web assets and configuration files:
 - `study.html`: Information about the research study
 - `feedback.js`: JavaScript for handling user feedback
 - `whitelist.txt`: List of trusted domains that bypass certain security checks
-- `gif/`: Directory containing tutorial GIFs demonstrating how to use the system
-
 During runtime, the system also creates a `tmp` directory within `data` for storing:
 - Screenshots of analyzed websites
 - Log files
 - Temporary analysis reports
 - User feedback data
-
-### Attachments Directory
-
-The `attachments` directory contains data used directly in the bachelor's thesis:
-- `raw_study_submissions.zip`: Raw data collected from the user study
-- `llm_comparison.pdf`: Results of the subjective LLM comparison
-- `study_analyze_helper.js`: Script used to analyze the study data
 
 ### Building
 ```bash
