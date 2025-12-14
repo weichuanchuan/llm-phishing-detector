@@ -103,6 +103,19 @@ The system is organized into several key components:
    docker compose down
    ```
 
+### One-Click Docker Deployment
+
+For a streamlined setup that builds the image, creates required directories, and ensures the Traefik network exists, run:
+
+```bash
+./run.sh
+```
+
+Prerequisites:
+- Docker with Docker Compose v2 available via `docker compose`
+- A populated `.env` file (including `MAIL_SERVER_FS`)
+- Permissions to create the `traefik_web` Docker network if it does not already exist
+
 ## Usage
 
 ### Live Demo
