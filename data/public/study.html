@@ -7,23 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-start: #0b1021;
-      --bg-end: #1b2b4a;
-      --card: rgba(22, 26, 52, 0.78);
-      --glass: rgba(255, 255, 255, 0.08);
-      --accent: #7cf2ad;
-      --accent-2: #7ab8ff;
-      --text: #e8ecf3;
-      --muted: #b7c4d8;
-      --shadow: 0 18px 60px rgba(0,0,0,0.35);
+      --bg: #ffffff;
+      --card: #f7f9fc;
+      --glass: rgba(95, 139, 255, 0.08);
+      --accent: #5dd4a1;
+      --accent-2: #5f8bff;
+      --text: #1f2a44;
+      --muted: #5b6b85;
+      --shadow: 0 14px 46px rgba(0,0,0,0.08);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at 15% 20%, rgba(124, 242, 173, 0.16), transparent 26%),
-                  radial-gradient(circle at 80% 0%, rgba(122, 184, 255, 0.18), transparent 30%),
-                  linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -33,23 +30,22 @@
     }
 
     header { width: 100%; text-align: center; margin-bottom: 26px; }
-    header h1 { font-size: 2.6em; color: #fff; margin-bottom: 10px; text-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+    header h1 { font-size: 2.6em; color: #1f2a44; margin-bottom: 10px; text-shadow: 0 8px 20px rgba(0,0,0,0.08); }
     header p { color: var(--muted); }
 
     .container {
       background: var(--card);
-      backdrop-filter: blur(14px);
       border-radius: 18px;
       padding: 26px;
       max-width: 1000px;
       width: 100%;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(95,139,255,0.12);
     }
 
     .intro { line-height: 1.7; color: var(--muted); margin-bottom: 18px; }
-    .block { margin-bottom: 18px; padding: 16px; border-radius: 14px; background: var(--glass); border: 1px solid rgba(255,255,255,0.1); }
-    .block h2 { font-size: 1.4em; margin-bottom: 8px; color: #fff; }
+    .block { margin-bottom: 18px; padding: 16px; border-radius: 14px; background: var(--glass); border: 1px solid rgba(95,139,255,0.12); }
+    .block h2 { font-size: 1.4em; margin-bottom: 8px; color: #1f2a44; }
     .block ul { padding-left: 18px; color: var(--muted); line-height: 1.6; }
     .block li { margin-bottom: 6px; }
     .cta { text-align: center; margin-top: 12px; }

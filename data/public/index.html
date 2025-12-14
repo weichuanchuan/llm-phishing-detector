@@ -7,17 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-start: #0b1021;
-      --bg-end: #192447;
-      --card: rgba(20, 24, 45, 0.7);
-      --glass: rgba(255, 255, 255, 0.08);
-      --accent: #7cf2ad;
-      --accent-2: #7ab8ff;
-      --text: #e8ecf3;
-      --muted: #b7c4d8;
-      --error: #ff7b9c;
-      --success: #6ff0b7;
-      --shadow: 0 18px 60px rgba(0,0,0,0.35);
+      --bg: #ffffff;
+      --card: #f6f8fb;
+      --glass: rgba(52, 120, 246, 0.08);
+      --accent: #5dd4a1;
+      --accent-2: #5f8bff;
+      --text: #1f2a44;
+      --muted: #5b6b85;
+      --error: #e84f7a;
+      --success: #1f9d70;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -28,9 +27,7 @@
 
     body {
       font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at 20% 20%, rgba(124, 242, 173, 0.16), transparent 25%),
-                  radial-gradient(circle at 80% 0%, rgba(122, 184, 255, 0.18), transparent 28%),
-                  linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -50,8 +47,8 @@
       font-size: 2.8em;
       margin-bottom: 10px;
       letter-spacing: 1px;
-      color: #ffffff;
-      text-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      color: #1f2a44;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
     header p {
@@ -61,25 +58,24 @@
 
     .content {
       background: var(--card);
-      backdrop-filter: blur(14px);
       border-radius: 18px;
       padding: 34px 28px;
       max-width: 640px;
       width: 100%;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(95, 139, 255, 0.12);
     }
 
     .content h2 {
       font-size: 1.5em;
       margin-bottom: 18px;
-      color: #ffffff;
+      color: #1f2a44;
       text-align: center;
       letter-spacing: 0.5px;
     }
 
     .drop-zone {
-      border: 1px dashed rgba(124, 242, 173, 0.55);
+      border: 1px dashed rgba(95, 139, 255, 0.4);
       border-radius: 14px;
       padding: 28px;
       text-align: center;
@@ -91,11 +87,11 @@
     }
 
     .drop-zone.hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: var(--accent);
-      color: #ffffff;
+      background: rgba(95, 139, 255, 0.12);
+      border-color: var(--accent-2);
+      color: #1f2a44;
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     }
 
     .drop-zone input {
@@ -118,12 +114,12 @@
       font-weight: 700;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 12px 30px rgba(124, 242, 173, 0.35);
+      box-shadow: 0 12px 30px rgba(95, 139, 255, 0.18);
     }
 
     .drop-zone button:hover {
       transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 14px 36px rgba(122, 184, 255, 0.3);
+      box-shadow: 0 14px 36px rgba(95, 139, 255, 0.22);
     }
 
     .message {
@@ -174,7 +170,7 @@
 
     #progress-container {
       width: 100%;
-      background-color: rgba(255,255,255,0.08);
+      background-color: rgba(95, 139, 255, 0.1);
       border-radius: 8px;
       overflow: hidden;
       display: none;
@@ -195,20 +191,20 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(6, 8, 18, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       display: none;
       z-index: 9999;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #eaf4ff;
+      color: #1f2a44;
       padding: 20px;
     }
 
     .fullscreen-spinner {
       margin: 0 auto 20px auto;
-      border: 8px solid rgba(255,255,255,0.18);
+      border: 8px solid rgba(95, 139, 255, 0.12);
       border-top: 8px solid var(--accent);
       border-radius: 50%;
       width: 70px;

@@ -7,23 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-start: #0b1021;
-            --bg-end: #1b2b4a;
-            --card: rgba(22, 26, 52, 0.78);
-            --glass: rgba(255, 255, 255, 0.08);
-            --accent: #7cf2ad;
-            --accent-2: #7ab8ff;
-            --text: #e8ecf3;
-            --muted: #b7c4d8;
-            --shadow: 0 18px 60px rgba(0,0,0,0.35);
+            --bg: #ffffff;
+            --card: #f7f9fc;
+            --glass: rgba(95, 139, 255, 0.08);
+            --accent: #5dd4a1;
+            --accent-2: #5f8bff;
+            --text: #1f2a44;
+            --muted: #5b6b85;
+            --shadow: 0 14px 46px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at 15% 20%, rgba(124, 242, 173, 0.16), transparent 26%),
-                        radial-gradient(circle at 80% 0%, rgba(122, 184, 255, 0.18), transparent 30%),
-                        linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             display: flex;
@@ -32,22 +29,21 @@
             padding: 24px;
         }
         header { text-align: center; width: 100%; margin-bottom: 26px; }
-        header h1 { font-size: 2.6em; color: #fff; margin-bottom: 10px; text-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+        header h1 { font-size: 2.6em; color: #1f2a44; margin-bottom: 10px; text-shadow: 0 8px 20px rgba(0,0,0,0.08); }
         header p { color: var(--muted); }
 
         .container {
             background: var(--card);
-            backdrop-filter: blur(14px);
             border-radius: 18px;
             padding: 26px;
             max-width: 950px;
             width: 100%;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(95,139,255,0.12);
         }
 
         .intro { line-height: 1.7; color: var(--muted); margin-bottom: 18px; }
-        .accordion { margin-bottom: 14px; border-radius: 12px; overflow: hidden; background: var(--glass); border: 1px solid rgba(255,255,255,0.12); }
+        .accordion { margin-bottom: 14px; border-radius: 12px; overflow: hidden; background: var(--glass); border: 1px solid rgba(95,139,255,0.12); }
         .accordion-header {
             padding: 14px 18px;
             background: linear-gradient(120deg, var(--accent), var(--accent-2));
@@ -63,7 +59,7 @@
         .accordion-content { display: none; padding: 16px 18px; line-height: 1.6; color: var(--text); }
         .accordion-content ul { margin-top: 10px; padding-left: 18px; }
         .accordion-content li { margin-bottom: 8px; color: var(--muted); }
-        .note { margin-top: 14px; padding: 12px; background: rgba(255,255,255,0.08); border-radius: 10px; color: var(--text); }
+        .note { margin-top: 14px; padding: 12px; background: rgba(95, 139, 255, 0.08); border-radius: 10px; color: var(--text); }
         footer { margin-top: 30px; color: var(--muted); text-align: center; font-size: 0.9em; }
 
         @media (max-width: 700px) { header h1 { font-size: 2.2em; } .container { padding: 20px; } }
