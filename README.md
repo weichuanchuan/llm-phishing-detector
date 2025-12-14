@@ -55,7 +55,7 @@ The system is organized into several key components:
 ### Prerequisites
 - Docker and Docker Compose
 - A mail server for sending/receiving emails
-- An OpenRouter API key for LLM access
+- An OpenAI API key for LLM access
 
 ### Docker Compose Installation
 
@@ -78,8 +78,8 @@ The system is organized into several key components:
    # API key for Google Safe Browsing to check URLs for malicious content
    GOOGLE_SAFE_BROWSING_API_KEY=your-google-safe-browsing-api-key
    
-   # API key for OpenRouter to access various AI models
-   OPENROUTER_API_KEY=your-openrouter-api-key
+   # API key for OpenAI to access LLM models
+   OPENAI_API_KEY=your-openai-api-key
    ```
 
 3. Start the application with Docker Compose:
@@ -130,7 +130,7 @@ Send an email to the configured email address. The system will analyze the email
 Edit `data/public/whitelist.txt` to add trusted domains that should bypass certain security checks.
 
 ### LLM Configuration
-The system uses OpenRouter to access various AI models. Configure the model in `src/tests/llm_test_suite.ts`.
+The system uses the official OpenAI API for language model access. Configure the model in `src/tests/llm_test_suite.ts`.
 
 ### ClamAV Configuration
 ClamAV is used for malware scanning. Ensure it's properly installed and configured on your system.

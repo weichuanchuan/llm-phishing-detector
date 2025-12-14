@@ -72,9 +72,7 @@ export class LlmTestSuite {
 
 
         // Select the AI model to use
-        // const model = 'gpt-4o';
-        // const model = 'gpt-4o-mini';
-        const model = 'google/gemini-2.0-flash-001';  // Currently using Google's Gemini model
+        const model = 'gpt-4o-mini';
         const completion = await openai.chat.completions.create({
             model,
             messages: [{ role: 'user', content: prompt.build() }],
